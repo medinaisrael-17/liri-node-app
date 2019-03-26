@@ -1,5 +1,3 @@
-const chalk = require('chalk');
-
 console.log('this is loaded');
 
 exports.spotify = {
