@@ -33,7 +33,7 @@ function concert_this(artist) {
     }).catch(function (err) {
         console.log(err);
     });
-}
+};
 
 
 function spotify_this_song(song){
@@ -60,9 +60,27 @@ function spotify_this_song(song){
         console.log(err);
     })
 
-}
+};
 
-function movie_this(){
+function movie_this(movie){
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then
+    (function(response) {
+        // console.log(response);
+        var movie = response.data;
+        console.log("==============================================")
+        console.log("Title: " + movie.Title);
+        console.log("Year Released: " + movie.Year);
+        console.log("IMDB: " + movie.Ratings[0].Value);
+        console.log("Rotten Tomatoes: " + movie.Ratings[1].Value);
+        console.log("Country: " + movie.Country);
+        console.log("Language: " + movie.Language);
+        console.log("Plot: \n\n" + movie.Plot + "\n");
+        console.log("Actors: " + movie.Actors);
+        console.log("==============================================")
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
 
 }
 
