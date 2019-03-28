@@ -39,7 +39,23 @@ function concert_this(artist) {
 function spotify_this_song(song){
     spotify.search({type: "track", query: song})
     .then(function(response) {
-        console.log(response.tracks.items);
+        var results = response.tracks.items
+        console.log(results);
+        for (var i = 0; i < results.length; i++) {
+            var track = results[i];
+            console.log("==============================================")
+            //artists name
+            for (var j = 0; j < track.artists.length; j++) {
+                console.log("Artists: " + track.artists[j].name);
+            }
+            //song name
+            console.log("Track: " + track.name);
+            //spotify link 
+            console.log("Link: " + track.external_urls.spotify); 
+            //album name
+            console.log("Album: " + track.album.name)
+            console.log("==============================================")
+        }
     }).catch(function(err){
         console.log(err);
     })
@@ -63,7 +79,7 @@ if (response === "spotify-this-song") {
 
 }
 if (response === "movie-this") {
-    movie_this();
+    movie_this(process.argv.slice(3).join(" "));
 
 }
 if (response === "do-what-it-says") {
