@@ -8,6 +8,10 @@ var keys = require('./keys.js');
 
 var Spotify = require('node-spotify-api');
 
+var fs = require("fs");
+
+var moment = require('moment');
+
 var response = process.argv[2];
 
 var spotify = new Spotify(keys.spotify);
@@ -18,22 +22,27 @@ function concert_this(artist) {
         // debugger;
         console.log(artist);
         var results = response.data;
-        console.log(response.data);
-        for (var i = 0; i < results.length; i++); {
-            console.log("Venue: " + results.venue.name);
-            console.log("Location: " + results.venue.city + ", " + results.venue.region);
+        for (var i = 0; i < results.length; i++) {
+            var concerts = results[i];
+            console.log("==============================================")
+            console.log("Venue: " + concerts.venue.name);
+            console.log("Location: " + concerts.venue.city + ", " + concerts.venue.region);
+            console.log("Event Date: " + moment(concerts.datetime).format("MM/DD/YYYY"));
+            console.log("==============================================")
         };
-        // console.log(artist);
-        // console.log(response);
-        // console.log("Venue: " + response.venue.name);
-        // console.log("Location: " + response.venue.city + ", " + response.VenueData.region);
     }).catch(function (err) {
         console.log(err);
     });
 }
 
 
-function spotify_this_song(){
+function spotify_this_song(song){
+    spotify.search({type: "track", query: song})
+    .then(function(response) {
+        console.log(response.tracks.items);
+    }).catch(function(err){
+        console.log(err);
+    })
 
 }
 
@@ -50,7 +59,7 @@ if (response === "concert-this") {
 
 }
 if (response === "spotify-this-song") {
-    spotify_this_song();
+    spotify_this_song(process.argv.slice(3).join(" "));
 
 }
 if (response === "movie-this") {
