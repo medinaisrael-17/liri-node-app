@@ -85,6 +85,17 @@ function movie_this(movie){
 }
 
 function do_what_it_says(){
+    fs.readFile("random.txt", "utf8", function(err, data){
+        if (err) {
+            return console.log(err);
+        }
+        var output = data.split(" ");
+        console.log(output);
+        //maybe set a variable to the function in the object
+        //set a varible to the second half of the object
+        //do what it says???
+
+    })
 
 }
 
