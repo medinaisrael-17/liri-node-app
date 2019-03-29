@@ -40,7 +40,6 @@ function spotify_this_song(song){
     spotify.search({type: "track", query: song})
     .then(function(response) {
         var results = response.tracks.items
-        console.log(results);
         for (var i = 0; i < results.length; i++) {
             var track = results[i];
             console.log("==============================================")
@@ -89,11 +88,21 @@ function do_what_it_says(){
         if (err) {
             return console.log(err);
         }
-        var output = data.split(" ");
-        console.log(output);
-        //maybe set a variable to the function in the object
-        //set a varible to the second half of the object
-        //do what it says???
+        var output = data.split(",");
+        toDo = output[0];
+        search = output[1];
+        if (toDo === "concert-this") {
+            concert_this(search);
+        
+        }
+        if (toDo === "spotify-this-song") {
+            spotify_this_song(search);
+        
+        }
+        if (toDo === "movie-this") {
+            movie_this(search);
+        
+        }
 
     })
 
