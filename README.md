@@ -74,7 +74,7 @@ The code is ran, showing us the information in a colorful pallete using the ```c
 * Location
 * Event Date
 
-![alt text](./concert-this.png "concert-this")
+![concert-this](./images/concert-this.png "concert-this")
 ## spotify-this-song
 ```spotify_this_song()``` is next on our list and works with the Spotify API to show the user information about a song, including:
 * The artists featured on the song
@@ -114,7 +114,7 @@ function spotify_this_song(song){
 ```
 Color is added here as well and the user can search any song that is on Spotify's databse.
 
-![alt text](./spotify-this-song.png "spotify-this-song")
+![spotify-this-song](./images/spotify-this-song.png "spotify-this-song")
 
 ## movie-this
 ```movie-this()``` is my favorite, and uses ```axios``` again to retrieve information about any given movie. This will tell the user:
@@ -157,7 +157,7 @@ function movie_this(movie){
 
 As you may notice, the user can input single and multiple worded entries on the command line for all search functions.
 
-![alt text](./movie-this.png "movie-this")
+![movie-this](./images/movie-this.png "movie-this")
 ## do-what-it-says
 
 Lastly, ```do-what-it-says()``` is very literal and will do the function written in the ```random.txt``` file. 
@@ -194,5 +194,5 @@ function do_what_it_says(){
 ```
 You can place any of the other functions shown above, along with a search entry, and it will run.
 
-![alt text](./do-what-it-says.png "do-what-it-says")
-![alt text](./terminal.png "terminal")
+![do-what-it-says](./images/do-what-it-says.png "do-what-it-says")
+![terminal](./images/terminal.png "terminal")
