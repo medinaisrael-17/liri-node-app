@@ -13,10 +13,9 @@ The user has a set of options:
 Each option takes one input and displays information for the item entered. 
 
 ## concert-this
----
 The "concert-this" is a function that takes in an artist enterd and displays any upcoming shows.
 
-```
+```javascript
 //concert this function to look up concerts
 function concert_this(artist) {
     //url to give to our axios
