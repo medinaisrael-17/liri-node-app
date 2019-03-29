@@ -160,7 +160,7 @@ As you may notice, the user can input single and multiple worded entries on the 
 ![alt text](./movie-this.png "movie-this")
 ## do-what-it-says
 
-Lastly, ```do-what-it-says()``` is very literal and will do the function written in the ``random.txt``` file. 
+Lastly, ```do-what-it-says()``` is very literal and will do the function written in the ```random.txt``` file. 
 
 ```javascript
 //do what it says function to read what is in our random.txt and perform its instructions
