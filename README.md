@@ -1,7 +1,13 @@
 # liri-node-app
 This application is similar to Siri but instead is a language interpretation and recognition interface.
 
-The liri node app is a CLI based app meaning that it takes inputs through the terminal and can generate results based on what it is given. 
+The liri node app is a CLI based app meaning that it takes inputs through the terminal and can generate results based on what it is given. We've stored the response in a variable.
+
+```javascript
+//variable set to what the user wants to do 
+//is followed after liri.js
+var response = process.argv[2];
+```
 
 The user has a set of options: 
 
@@ -11,6 +17,26 @@ The user has a set of options:
 * do-what-it-says
 
 Each option takes one input and displays information for the item entered. 
+
+```javascript
+//evaluate the response given by the user
+if (response === "concert-this") {
+    concert_this(process.argv.slice(3).join(" "));
+
+}
+if (response === "spotify-this-song") {
+    spotify_this_song(process.argv.slice(3).join(" "));
+
+}
+if (response === "movie-this") {
+    movie_this(process.argv.slice(3).join(" "));
+
+}
+if (response === "do-what-it-says") {
+    do_what_it_says();
+
+}
+```
 
 ## concert-this
 The "concert-this" is a function that takes in an artist enterd and displays any upcoming shows.
