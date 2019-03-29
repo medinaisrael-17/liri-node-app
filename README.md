@@ -74,10 +74,7 @@ The code is ran, showing us the information in a colorful pallete using the ```c
 * Location
 * Event Date
 
-Reference-style: 
-![alt text][concert-this]
-
-[logo]: ./concert-this.png "concert-this"
+![alt text](./concert-this.png "concert-this")
 ## spotify-this-song
 ## movie-this
 ## do-what-it-says
