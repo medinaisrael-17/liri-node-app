@@ -117,4 +117,45 @@ Color is added here as well and the user can search any song that is on Spotify'
 ![alt text](./spotify-this-song.png "spotify-this-song")
 
 ## movie-this
+```movie-this()``` is my favorite, and uses ```axios``` again to retrieve information about any given movie. This will tell the user:
+* Title of the movie
+* Year it was released
+* IMDB rating
+* Rotten Tomatoes score
+* Country it was made in
+* Language its played in
+* Plot of the movie
+* Major actors of the movie
+
+```javascript
+//movie this function to look up info on a given movie
+function movie_this(movie){
+    //axios to retrieve info about the movie
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then
+    (function(response) {
+        //start of the info
+        console.log("\n\nShowing results for: " + chalk.hex('#ffde26').underline(movie));
+        var search = response.data;
+        //everything that is needed
+        console.log("==============================================")
+        console.log(chalk.hex('#ff6302')("Title: ") + chalk.hex('##f23f3c')(search.Title));
+        console.log(chalk.hex('#ff6302')("Year Released: ") + chalk.hex('##f23f3c')(search.Year));
+        console.log(chalk.hex('#ff6302')("IMDB: ") + chalk.hex('##f23f3c')(search.Ratings[0].Value));
+        console.log(chalk.hex('#ff6302')("Rotten Tomatoes: ") + chalk.hex('##f23f3c')(search.Ratings[1].Value));
+        console.log(chalk.hex('#ff6302')("Country: ") + chalk.hex('##f23f3c')(search.Country));
+        console.log(chalk.hex('#ff6302')("Language: ") + chalk.hex('##f23f3c')(search.Language));
+        console.log(chalk.hex('#ff6302')("Plot: \n\n") + chalk.hex('##f23f3c')(search.Plot + "\n"));
+        console.log(chalk.hex('#ff6302')("Actors: ") + chalk.hex('##f23f3c')(search.Actors));
+        console.log("==============================================\n")
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+
+}
+```
+
+As you may notice, the user can input single and multiple worded entries on the command line for all search functions.
+
+![alt text](./movie-this.png "movie-this")
 ## do-what-it-says
