@@ -39,13 +39,13 @@ if (response === "do-what-it-says") {
 ```
 
 ## concert-this
-```concert-this()``` is a function that takes in an artist enterd and displays any upcoming shows using ```axios``` and the "bands-in-town" api. I've also included ```moment.js``` to format the date, making it easier to read.
+```concert-this()``` is a function that takes in an artist enterd and displays any upcoming shows using ```axios``` and the "bands-in-town" API. I've also included ```moment.js``` to format the date, making it easier to read.
 
 ```javascript
 //concert this function to look up concerts
 function concert_this(artist) {
     //url to give to our axios
-    queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=######";
     //call axios to retrieve info
     axios.get(queryUrl).then(function (response) {
         //start of our information being displayed
@@ -69,12 +69,52 @@ function concert_this(artist) {
 };
 ```
 
-The code is ran, showing us the information in a colorful pallete using the ```chalk()``` npm install and illustrates 
+The code is ran, showing us the information in a colorful pallete using the ```chalk()``` npm install and illustrates: 
 * Venue Name
 * Location
 * Event Date
 
 ![alt text](./concert-this.png "concert-this")
 ## spotify-this-song
+```spotify_this_song()``` is next on our list and works with the Spotify API to show the user information about a song, including:
+* The artists featured on the song
+* The track name
+* A link to the song on spotify
+* Name of the album it appears on
+
+```javascript
+//spotify this to search matching songs on spotify
+function spotify_this_song(song){
+    spotify.search({type: "track", query: song})
+    .then(function(response) {
+        //start of info
+        console.log("\n\nShowing results for: " + chalk.hex('#059322').underline(song));
+        var results = response.tracks.items
+        //for loop to display the info given back from spotify
+        for (var i = 0; i < results.length; i++) {
+            var track = results[i];
+            console.log("==============================================")
+            //to generate a list of artists
+            for (var j = 0; j < track.artists.length; j++) {
+                console.log(chalk.yellowBright("Artist: ") + chalk.green(track.artists[j].name));
+            }
+            //song name
+            console.log(chalk.yellowBright("Track: ") + chalk.green(track.name));
+            //spotify link 
+            console.log(chalk.yellowBright("Link: ") + chalk.green(track.external_urls.spotify)); 
+            //album name
+            console.log(chalk.yellowBright("Album: ") + chalk.green(track.album.name));
+            console.log("==============================================\n")
+        }
+    }).catch(function(err){
+        console.log(err);
+    })
+
+};
+```
+Color is added here as well and the user can search any song that is on Spotify's databse.
+
+![alt text](./spotify-this-song.png "spotify-this-song")
+
 ## movie-this
 ## do-what-it-says
