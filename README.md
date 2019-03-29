@@ -131,7 +131,7 @@ Color is added here as well and the user can search any song that is on Spotify'
 //movie this function to look up info on a given movie
 function movie_this(movie){
     //axios to retrieve info about the movie
-    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then
+    axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=********").then
     (function(response) {
         //start of the info
         console.log("\n\nShowing results for: " + chalk.hex('#ffde26').underline(movie));
@@ -159,3 +159,40 @@ As you may notice, the user can input single and multiple worded entries on the 
 
 ![alt text](./movie-this.png "movie-this")
 ## do-what-it-says
+
+Lastly, ```do-what-it-says()``` is very literal and will do the function written in the ``random.txt``` file. 
+
+```javascript
+//do what it says function to read what is in our random.txt and perform its instructions
+function do_what_it_says(){
+    //fs.readfile to read the file we give it
+    fs.readFile("random.txt", "utf8", function(err, data){
+        if (err) {
+            return console.log(err);
+        }
+        //split the text in the file by any commas
+        var output = data.split(",");
+        toDo = output[0];
+        search = output[1];
+        //if the first part of the data array is x, do y 
+        if (toDo === "concert-this") {
+            concert_this(search);
+        
+        }
+        if (toDo === "spotify-this-song") {
+            spotify_this_song(search);
+        
+        }
+        if (toDo === "movie-this") {
+            movie_this(search);
+        
+        }
+
+    })
+
+}
+```
+You can place any of the other functions shown above, along with a search entry, and it will run.
+
+![alt text](./do-what-it-says.png "do-what-it-says")
+![alt text](./terminal.png "terminal")
