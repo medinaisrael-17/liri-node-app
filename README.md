@@ -39,7 +39,7 @@ if (response === "do-what-it-says") {
 ```
 
 ## concert-this
-The "concert-this" is a function that takes in an artist enterd and displays any upcoming shows.
+"concert-this" is a function that takes in an artist enterd and displays any upcoming shows using axios and the "bands-in-town" api.
 
 ```javascript
 //concert this function to look up concerts
@@ -67,8 +67,17 @@ function concert_this(artist) {
         console.log(err);
     });
 };
-
 ```
+
+The code is ran, showing us the information in a colorful pallete using the ```chalk()``` npm install and illustrates 
+* Venue Name
+* Location
+* Event Date
+
+Reference-style: 
+![alt text][concert-this]
+
+[logo]: ./concert-this.png "concert-this"
 ## spotify-this-song
 ## movie-this
 ## do-what-it-says
